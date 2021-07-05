@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content%}
+    <h1 class="padding">My Jobs</h1><br><br>
+    {% if jobs%}
+        {% for job in jobs %}
+            
+                <div class="row">
+                    <div class="col">
+                        <h1 class="paddingleft" style="padding-left: 30%;">{{job.job_name}} </h1>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'candidatesapplied' job.id%}" style="padding-left:40%;" ><button class="btn btn-primary btn-lg">View Applictions</button></a>
+                    </div>
+                </div>
+                <hr>
+        
+        {% endfor %} 
+    {%else%}
+            <div class="padding">
+                <h3 style="color: red;" >No Job posts yet!</h3>
+                <br>
+
+            </div>
+    {%endif%}
+            <div class="row">
+                <div class="col padding ">
+                    <a class="" href="{%url 'jobform'%}"><button class="btn btn-success ">New Job</button></a> 
+                </div>
+            </div>
+    {% endblock%}
+</body>
+</html>

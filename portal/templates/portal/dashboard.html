@@ -1,0 +1,75 @@
+<!--users/templates/portal/dashboard.html-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    
+  </head>
+  <body>
+    
+
+    {% extends 'base.html' %}
+
+    {% block content %}
+    
+    <div class="container padding" style="padding-top: 8%;">
+      <div class="row">
+        <div class="col">
+          <h1 class="display-5">“It's not what you achieve, it's what you overcome. That's what defines your career."</h1>
+          <h3 class="paddingright">—Carlton Fisk</h3>
+        </div>
+      </div>
+      {% if user.is_authenticated %}
+      <br><br>
+     
+      <div class="row" >
+        {%if iscandidate%}
+        <div class="col paddingright">
+          <a href="{% url 'jobapplied' %}"><button class="btn btn-secondary">View Applications</button></a>
+        </div>
+        <div class="col padding">
+          <a href="{% url 'clientdashboard' %}"><button class="btn btn-secondary">View Jobs</button></a>
+        </div>
+        <div class="col paddingleft">
+          <a href="{% url 'candidates' %}"><button class="btn btn-secondary">Update Profile</button></a>
+        </div>
+        {%elif addcandidate%}
+        <div class="col paddingleft">
+          <a href="{% url 'candidates' %}"><button class="btn btn-outline-success">Update Profile</button></a>
+        </div>
+        {%else%}
+        
+          <div class="col paddingright">
+            <a href="{% url 'clientdashboard' %}"><button class="btn btn-primary">My Jobs</button></a>
+          </div>
+        {% endif %}
+        </div>
+        
+      {% else %}
+      <br><br>
+        <div class="row">
+          <div class="col paddingright">
+            <a href="{% url 'login' %}" id= 'loginbutton'><button class="btn btn-primary">Login</button></a>
+          </div>
+          <div class="col " >
+            <label for="signupbutton">New user?</label>
+            <a href="{% url 'signup' %}" id="signupbutton"><button class="btn btn-danger">Sign Up</button></a>
+          </div>
+          <br><br><br>
+        </div>
+          <div class="row">
+            
+          </div>
+          
+        
+        {% endif %}
+      {% endblock %}
+      
+        </div>
+      </div>
+      
+    </div>
+    
+  </body>
+</html>

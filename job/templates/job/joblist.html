@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+<!-- listing jobs from JobView -->
+{% block content%}
+    <div class="" style="padding-left: 10%;">
+        <h1 class="">Jobs</h1>
+    </div>
+    <div class="" style="padding-left: 10%;" >
+        <form action="{% url 'joblist' %}" class="paddingright" style="padding-right: 60%;">
+            {% csrf_token %}
+            <input type="submit"value="Search" style="float: right" class="btn btn-success"/>
+            <div style="overflow: hidden; padding-right: .5em;">
+            <input class="form-control" type="search" style="width: 100%;" placeholder="Search Jobs" name="search" />
+            </div>
+        </form>
+    </div>
+    <hr style="margin-left: 10%;">
+    <br>
+    {% for job in jobs %}
+    <div class="">
+        <h1 style="padding-left: 10%;"><a href="{% url 'jobdetails' job.id%}">{{job.job_name}}</a></h1>
+    </div>
+    <div class="">
+        <p style="padding-left: 10%; padding-right: 20%;">{{job.job_desc}}</p>
+    </div>
+    <hr style="margin-left: 10%;">
+    {% endfor %}
+{% endblock%}
+    

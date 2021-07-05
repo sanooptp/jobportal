@@ -1,0 +1,38 @@
+<!--users/templates/portal/jobdetails.html-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    {% extends 'base.html' %}
+    <!-- listing jobs from JobView -->
+    {% block content%}
+    
+      <div style="padding-left: 10%; padding-right: 20%;" class="">
+        <h1 class="display-3">{{jobs.job_name}}</h1>
+        <h1><span style="font-weight: bold;">About Role: </span><p style="color:darkslategray;">{{jobs.job_desc}}</p></h1>
+        <h1><span style="font-weight: bold;">Min Age required: </span><span style="color:darkslategray">{{jobs.min_age}}</span></h1>
+        <h1><span style="font-weight: bold;">Max Age required: </span><span style="color: darkslategray">{{jobs.max_age}}</span></h1>
+        <h1><span style="font-weight: bold;">Salary: </span><span style="color:darkslategray">{{jobs.salary}}</span></h1>
+        <h1><span style="font-weight: bold;">No. of openings: </span><span style="color: red;">{{jobs.n_openings}}</span></h1>
+        <h1><span style="font-weight: bold;">Job posted by: </span><span style="color:darkslategray">{{jobs.creator}}</span></h1>
+      </div><br>
+      <div style="" class="padding">
+        {% if user.is_authenticated %}
+        
+        <a href="{% url 'jobapply'  jobs.id %}"><button class="btn btn-success">Apply</button> </a>
+        {%else%}
+        <a href="{%url 'dashboard'%}"><button class="btn btn-success">Login</button></a>
+        {% endif %}
+      </div>
+    {% endblock%}
+
+    
+  </body> 
+  <script>
+    
+  </script>
+</html>

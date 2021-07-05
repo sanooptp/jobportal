@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <style>
+        
+    </style>
+    {% extends 'base.html' %}
+
+    {% block content%}
+    
+    <br>
+    <div class="row">
+        <div class="col">
+            <h3>Job Name</h3>
+        </div>
+        <div class="col padding">
+            <h3>Status</h3>
+        </div>
+        <div class="col padding">
+            <h3></h3>    
+        </div>
+    </div>
+    
+    <hr>
+    {% for job in jobs %}
+        
+        {% if job.username == request.user %}
+        <br>
+            <div class="row">
+                <div class="col">
+                    <h1>{{job.job_applied}}</h1>
+                </div>
+                {%if job.status == 'Accepted'%}
+                <div class="col padding">
+                    <h1 style="color:rgb(2, 119, 2);">{{job.status }}</h1>
+                </div>
+                {%else%}
+                <div class="col padding">
+                    <h1 style="color: red;">{{job.status }}</h1>
+                </div>
+                {%endif%}
+                <div class="col padding">
+                    <a href="{% url 'jobcancel' job.id%}"><button class="btn btn-danger apply">Cancel Application</button></a>
+                </div>
+            </div>
+            
+        
+            <hr>
+
+        {% endif %}
+
+    {% endfor %}
+
+    {% endblock %}
+</body>
+</html>

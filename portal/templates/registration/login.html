@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% extends 'base.html' %}
+
+      
+        {% block content %}
+        <div class="container padding">
+          <div class="col">
+            <h2 class="">Login</h2>
+          </div>
+       <br>
+        <div class="row">
+          <div style="" class="col">
+            <form  class=""  method="post">
+              {% csrf_token %}
+              <div class="" style="padding-left: 41%;" >
+                {{form.username}}
+                <br>
+                {{form.password}}
+                <br>
+              </div>
+              <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
+              <input class="btn btn-success" type="submit" value="Login">
+              
+            </form>
+          </div>
+        </div>
+        <br>
+        <a href="{% url 'password_reset' %}">Forgot password</a> <br>
+        <a class="" href="{% url 'dashboard' %}">Back to dashboard</a>
+        {% endblock %}
+      </div>
+  </body>
+</html>

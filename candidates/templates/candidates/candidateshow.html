@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4 ">
+                    {{candidate.name}}
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Age:</label> <span>{{candidate.age}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Gender:</label> <span>{{candidate.gender}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Mobile:</label> <span>{{candidate.mobile}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">City:</label> <span>{{candidate.city}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Exp Salary:</label> <span>{{candidate.exp_salary}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Relocate:</label> <span>{{candidate.relocate}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="{{candidate.resume.url}}">Resume</a>
+                
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    {% endblock%}
+</body>
+</html>

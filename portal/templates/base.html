@@ -1,0 +1,72 @@
+<!--portal/templates/base.html-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <style>
+    label, input {
+        display: block;
+    }
+    span.helptext {
+        display: none;
+    }
+    .padding{
+      text-align: center;
+    }
+    .paddingleft{
+      text-align: left;
+    }
+    .paddingright{
+      text-align: right;
+    }
+    .centeralign{
+      width: 10%;
+      margin: 10 auto;
+    }
+    .hr_base{
+      height: 10px;
+      border: 0;
+      box-shadow: 0 10px 10px -10px #8c8c8c inset;
+    }
+    
+  </style>
+  <head>
+    <meta charset="utf-8">
+    <title>Job Portal</title>
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    {% load bootstrap4 %}
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-8 paddingright">
+          <h1 class="display-2">Job Portal</h1>
+        </div>
+        <div class="col paddingright">
+          <br><br>
+          {% if user.is_authenticated%}
+            <span>{{user.username}}</span>
+            <a href="{% url 'logout' %}"><button class="btn btn-outline-danger">Logout </button></a>
+          {%endif%}
+          <a href="{% url 'dashboard' %}"><button class="btn btn-outline-primary ">Home</button></a>
+          <a href="{% url 'payments' %}"><button class="btn btn-warning ">Donate</button></a>
+        </div>
+      </div>
+    </div>  
+      
+    <hr class="hr_base">
+    {% block content %}
+    
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content%}
+    <h1 class="display-4 padding">{{current_job.job_name}}</h1> <br>
+    {%if jobs%}
+        {% for job in jobs%}
+        <div class="row">
+        <div class="col-4 paddingright">
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'candidateshow' job.username.id %}"><h1 class="" id="c_name">{{job.username}}</h1></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 padding">
+            <h1 class="">{{job.status}}</h1>
+        </div>  
+        <div class="col-4 padding">
+            {%if job.status != 'Accepted'%}
+            <a href="{% url 'jobaccept' job.id %}"><button class="btn btn-success">Accept</button></a>
+            {%endif%}
+            {% if job.status != 'Rejected'%}
+            <a href="{% url 'jobreject' job.id %}"><button class="btn btn-danger">Reject</button></a>
+            {%endif%}
+        </div>
+    </div> <hr style="width: 60%;">
+     
+        {%endfor%}
+        {%else%}
+        <h1 class="padding" style="color: red;">No Candidates applied for this Job !</h1><br><br>
+        <a href="{% url 'clientdashboard'%}" style="padding-left: 48%;"><button class="btn btn-dark">Back</button></a>
+        {%endif%}
+    {% endblock%}
+</body>
+</html>
