@@ -84,7 +84,6 @@ def save(request,jobid):
     return HttpResponseRedirect('/joblist')
 
 
-# Show candidates who applied for the job
 class CandidateShowView(generic.CreateView):
     template_name = 'candidates/candidateshow.html'
     model = Candidate
