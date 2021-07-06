@@ -91,3 +91,4 @@ class CandidateShowView(generic.CreateView):
         candidate = self.model.objects.get(c_username = userid)
         args = {'candidate': candidate}
         return render(request, self.template_name, args)  
+# jkldsjflk
